@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu jQuery</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+    .menu-item {
+        margin-right: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .menu-item:hover {
+        background-color: #0056b3;
+    }
+
+    .menu-item.active {
+        background-color: #0056b3;
+    }
+
+    .content {
+        margin-top: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+</style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="menu-item active" data-target="content1">Menu 1</div>
+        <div class="menu-item" data-target="content2">Menu 2</div>
+        <div class="menu-item" data-target="content3">Menu 3</div>
+    </div>
+
+    <div id="content1" class="content active">
+        <h1>Content 1</h1>
+        <p>This is the content for Menu 1.</p>
+    </div>
+    <div id="content2" class="content">
+        <h1>Content 2</h1>
+        <p>This is the content for Menu 2.</p>
+    </div>
+    <div id="content3" class="content">
+        <h1>Content 3</h1>
+        <p>This is the content for Menu 3.</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.menu-item').click(function () {
+                const targetId = $(this).data('target');
+                $('.content').removeClass('active');
+                $('#' + targetId).addClass('active');
+
+                $('.menu-item').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basic Dialog with jQuery UI</title>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .ui-dialog-titlebar {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .ui-dialog-content {
+        padding: 20px;
+    }
+</style>
+</head>
+<body>
+    <button id="openDialog">Open Dialog</button>
+
+    <div id="dialog" title="Basic Dialog">
+        <p>This is a basic dialog window using jQuery UI.</p>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#dialog").dialog({
+                autoOpen: false,
+                modal: true,
+                resizable: false,
+                buttons: {
+                    "Close": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $("#openDialog").click(function () {
+                $("#dialog").dialog("open");
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Program JavaScript</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    h1 {
+        margin-bottom: 20px;
+    }
+    .btn {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+    .input-field {
+        margin-bottom: 10px;
+    }
+    .error {
+        color: red;
+    }
+</style>
+</head>
+<body>
+    <h1>Program JavaScript</h1>
+
+    <div id="program-alert">
+        <h2>1. Program Alert</h2>
+        <button class="btn" onclick="showAlert()">Tampilkan Alert</button>
+    </div>
+
+    <div id="program-input-data" class="input-field">
+        <h2>2. Program Input Data</h2>
+        <label for="input-number">Masukkan angka:</label>
+        <input type="number" id="input-number">
+        <button class="btn" onclick="showInputData()">Kirim</button>
+    </div>
+
+    <div id="program-confirm-box">
+        <h2>3. Program Confirm Box</h2>
+        <button class="btn" onclick="showConfirmBox()">Tampilkan Confirm Box</button>
+    </div>
+
+    <div id="program-validasi-isian" class="input-field">
+        <h2>4. Program Validasi Isian</h2>
+        <label for="input-text">Masukkan teks (minimal 3 karakter):</label>
+        <input type="text" id="input-text">
+        <span id="validation-error" class="error"></span>
+        <button class="btn" onclick="validateInput()">Validasi</button>
+    </div>
+
+    <div id="program-radio-box">
+        <h2>5. Program Radio Box</h2>
+        <label><input type="radio" name="gender" value="male"> Male</label>
+        <label><input type="radio" name="gender" value="female"> Female</label>
+        <button class="btn" onclick="showRadioValue()">Tampilkan Value</button>
+    </div>
+
+    <div id="program-verifikasi-password" class="input-field">
+        <h2>6. Program Verifikasi Password</h2>
+        <label for="password">Password:</label>
+        <input type="password" id="password">
+        <label for="confirm-password">Konfirmasi Password:</label>
+        <input type="password" id="confirm-password">
+        <span id="password-error" class="error"></span>
+        <button class="btn" onclick="verifyPassword()">Verifikasi</button>
+    </div>
+
+    <div id="program-waktu-real-time">
+        <h2>7. Waktu Real-Time</h2>
+        <p id="real-time"></p>
+    </div>
+
+    <script>
+        // Program 1: Alert
+        function showAlert() {
+            alert('Ini adalah pesan alert!');
+        }
+
+        // Program 2: Input Data
+        function showInputData() {
+            const inputData = document.getElementById('input-number').value;
+            alert('Anda memasukkan angka: ' + inputData);
+        }
+
+        // Program 3: Confirm Box
+        function showConfirmBox() {
+            const result = confirm('Apakah Anda yakin?');
+            if (result) {
+                alert('Anda memilih OK!');
+            } else {
+                alert('Anda memilih Cancel!');
+            }
+        }
+
+        // Program 4: Validasi Isian
+        function validateInput() {
+            const inputText = document.getElementById('input-text').value;
+            const errorSpan = document.getElementById('validation-error');
+            if (inputText.length < 3) {
+                errorSpan.textContent = 'Teks harus minimal 3 karakter!';
+            } else {
+                errorSpan.textContent = '';
+                alert('Validasi berhasil!');
+            }
+        }
+
+        // Program 5: Radio Box
+        function showRadioValue() {
+            const radios = document.getElementsByName('gender');
+            let selectedValue = '';
+            radios.forEach(radio => {
+                if (radio.checked) {
+                    selectedValue = radio.value;
+                }
+            });
+            if (selectedValue) {
+                alert('Jenis kelamin yang dipilih: ' + selectedValue);
+            } else {
+                alert('Pilih salah satu jenis kelamin!');
+            }
+        }
+
+        // Program 6: Verifikasi Password
+        function verifyPassword() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const errorSpan = document.getElementById('password-error');
+            if (password !== confirmPassword) {
+                errorSpan.textContent = 'Password tidak cocok!';
+            } else {
+                errorSpan.textContent = '';
+                alert('Password cocok!');
+            }
+        }
+
+        // Program 7: Waktu Real-Time
+        function updateRealTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            document.getElementById('real-time').textContent = 'Waktu sekarang: ' + timeString;
+        }
+
+        setInterval(updateRealTime, 1000); // Update setiap detik
+    </script>
+</body>
+</html>
